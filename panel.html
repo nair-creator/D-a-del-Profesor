@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de control — 100 Amanecidos Dicen</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<div class="panel">
+
+  <div class="panel-header">
+    <h1>Panel de <span>control</span></h1>
+    <div class="nav-links">
+      <span class="estado-conexion" id="estado-conexion">Conectando...</span>
+      <a href="pantalla.html" target="_blank" rel="noopener">Abrir pantalla pública ↗</a>
+      <a href="preguntas.html">Banco de preguntas</a>
+      <a href="index.html">Inicio</a>
+    </div>
+  </div>
+
+  <div class="grid-panel">
+    <!-- Columna izquierda: control principal del juego -->
+    <div>
+
+      <div class="tarjeta">
+        <h2>Control de partida</h2>
+        <div class="fila">
+          <button class="btn btn-primario" id="btn-iniciar">Iniciar partida</button>
+          <button class="btn btn-oscuro" id="btn-reiniciar-ronda">Reiniciar ronda</button>
+          <button class="btn btn-oscuro" id="btn-reiniciar-partida">Reiniciar partida</button>
+          <button class="btn btn-peligro" id="btn-finalizar">Finalizar partida</button>
+        </div>
+        <div class="fila" style="margin-top:14px;">
+          <label for="input-ronda" style="font-size:.85rem;color:var(--crema-opaca);">Ronda:</label>
+          <input type="number" id="input-ronda" min="1" value="1" style="width:80px;">
+          <button class="btn btn-fantasma" id="btn-cambiar-ronda">Cambiar de ronda</button>
+        </div>
+        <p class="ayuda">Estado actual: <strong id="txt-estado-juego">espera</strong>. "Reiniciar ronda" borra las respuestas reveladas y la X de la pregunta actual, sin tocar los puntajes. "Reiniciar partida" pone todo en cero (puntajes, fallos y ronda).</p>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Pregunta actual</h2>
+        <div class="fila">
+          <select id="select-pregunta"></select>
+          <button class="btn btn-primario" id="btn-mostrar-pregunta">Mostrar pregunta</button>
+        </div>
+        <p class="ayuda">Al mostrar una pregunta nueva se ocultan sus 5 respuestas automáticamente. El listado se actualiza solo con lo que cargues en "Banco de preguntas".</p>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Respuestas (revelar cuando el equipo acierte)</h2>
+        <div class="lista-reveals" id="lista-reveals">
+          <p class="ayuda">Elegí "Mostrar pregunta" para ver las 5 respuestas acá.</p>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Respuesta incorrecta</h2>
+        <div class="fila">
+          <button class="btn btn-peligro btn-grande" id="btn-fallo-e1" style="max-width:260px;">✕ Falló Equipo 1</button>
+          <button class="btn btn-peligro btn-grande" id="btn-fallo-e2" style="max-width:260px;">✕ Falló Equipo 2</button>
+          <button class="btn btn-fantasma" id="btn-quitar-x">Quitar X de la pantalla</button>
+        </div>
+        <p class="ayuda">Cada botón suma un fallo al equipo (hasta 3) y muestra una X grande en la pantalla pública. "Quitar X" solo oculta la X de la pantalla; no borra el contador de fallos. Para borrar los fallos, usá "Reiniciar ronda" o "Reiniciar partida".</p>
+      </div>
+
+    </div>
+
+    <!-- Columna derecha: equipos -->
+    <div>
+      <div class="tarjeta">
+        <h2>Equipo con el control (recibe los puntos al revelar)</h2>
+        <div class="fila">
+          <button class="btn btn-e1" id="btn-control-e1">Le toca a Equipo 1</button>
+          <button class="btn btn-e2" id="btn-control-e2">Le toca a Equipo 2</button>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Equipo 1</h2>
+        <div class="fila">
+          <input type="text" id="nombre-e1" placeholder="Nombre del equipo 1">
+          <button class="btn btn-fantasma" id="btn-guardar-nombre-e1">Guardar nombre</button>
+        </div>
+        <div class="marcador-panel e1" style="margin-top:12px;">
+          <div>
+            <div class="nombre" id="ver-nombre-e1">Equipo 1</div>
+            <div class="num" id="ver-puntos-e1">0</div>
+          </div>
+          <div class="controles-mini">
+            <button class="btn-e1" id="btn-restar10-e1">-10</button>
+            <button class="btn-e1" id="btn-sumar10-e1">+10</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Equipo 2</h2>
+        <div class="fila">
+          <input type="text" id="nombre-e2" placeholder="Nombre del equipo 2">
+          <button class="btn btn-fantasma" id="btn-guardar-nombre-e2">Guardar nombre</button>
+        </div>
+        <div class="marcador-panel e2" style="margin-top:12px;">
+          <div>
+            <div class="nombre" id="ver-nombre-e2">Equipo 2</div>
+            <div class="num" id="ver-puntos-e2">0</div>
+          </div>
+          <div class="controles-mini">
+            <button class="btn-e2" id="btn-restar10-e2">-10</button>
+            <button class="btn-e2" id="btn-sumar10-e2">+10</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Declarar ganador y finalizar</h2>
+        <div class="fila">
+          <button class="btn btn-e1" id="btn-ganador-e1">Ganó Equipo 1</button>
+          <button class="btn btn-e2" id="btn-ganador-e2">Ganó Equipo 2</button>
+        </div>
+        <p class="ayuda">Esto pone la partida en estado "finalizado" y muestra la pantalla de ganador en el proyector.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/comun.js"></script>
+<script src="js/panel.js"></script>
+</body>
+</html>

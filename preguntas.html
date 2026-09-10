@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco de preguntas — 100 Amanecidos Dicen</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<div class="panel">
+  <div class="panel-header">
+    <h1>Banco de <span>preguntas</span></h1>
+    <div class="nav-links">
+      <span class="estado-conexion" id="estado-conexion">Conectando...</span>
+      <a href="panel.html">Panel de control</a>
+      <a href="index.html">Inicio</a>
+    </div>
+  </div>
+
+  <div class="grid-panel">
+    <div>
+      <div class="tarjeta">
+        <h2 id="titulo-form">Nueva pregunta</h2>
+        <div class="form-pregunta">
+          <input type="hidden" id="id-edicion">
+          <div class="fila">
+            <label style="width:100%;">
+              <div style="font-size:.82rem;color:var(--crema-opaca);margin-bottom:4px;">Texto de la pregunta</div>
+              <textarea id="f-texto" rows="2" style="width:100%;" placeholder="¿Qué es lo que más se escucha durante un recreo?"></textarea>
+            </label>
+          </div>
+          <div class="fila">
+            <label>
+              <div style="font-size:.82rem;color:var(--crema-opaca);margin-bottom:4px;">Ronda</div>
+              <input type="number" id="f-ronda" min="1" value="1" style="width:100px;">
+            </label>
+          </div>
+
+          <div id="f-respuestas">
+            <!-- 5 filas generadas por JS -->
+          </div>
+
+          <div class="acciones-form">
+            <button class="btn btn-fantasma" id="btn-cancelar-edicion" style="display:none;">Cancelar edición</button>
+            <button class="btn btn-primario" id="btn-guardar-pregunta">Guardar pregunta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tarjeta">
+        <h2>Preguntas cargadas</h2>
+        <div class="fila" style="margin-bottom:14px;">
+          <button class="btn btn-peligro" id="btn-borrar-demo">Borrar preguntas de prueba</button>
+          <button class="btn btn-fantasma" id="btn-borrar-todas">Borrar todas las preguntas</button>
+        </div>
+        <div class="tabla-preguntas" id="tabla-preguntas">
+          <p class="ayuda">Cargando...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/comun.js"></script>
+<script src="js/preguntas.js"></script>
+</body>
+</html>

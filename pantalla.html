@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pantalla — 100 Amanecidos Dicen</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="pantalla">
+    <div class="encabezado">
+      <div>
+        <div class="titulo-juego">100 <span class="n">AMANECIDOS</span> DICEN</div>
+        <div class="pill-estado" id="pill-estado">Esperando inicio...</div>
+      </div>
+      <div class="pill-ronda" id="pill-ronda">RONDA 1</div>
+    </div>
+
+    <div class="pregunta-caja">
+      <div class="pregunta-texto vacia" id="txt-pregunta">La pregunta va a aparecer acá</div>
+    </div>
+
+    <div class="tablero" id="tablero">
+      <!-- 5 casilleros generados por JS -->
+    </div>
+
+    <div class="marcadores">
+      <div class="marcador e1" id="marcador-e1">
+        <div class="nombre-equipo" id="nombre-e1">EQUIPO 1</div>
+        <div class="puntaje" id="puntos-e1">0</div>
+        <div class="fallos" id="fallos-e1"></div>
+      </div>
+      <div class="marcador e2" id="marcador-e2">
+        <div class="nombre-equipo" id="nombre-e2">EQUIPO 2</div>
+        <div class="puntaje" id="puntos-e2">0</div>
+        <div class="fallos" id="fallos-e2"></div>
+      </div>
+    </div>
+
+    <div class="qr-caja" id="qr-caja" style="display:none;">
+      <img id="qr-img" alt="Código QR para ver la pantalla desde el celular">
+      <span>Seguí el juego desde tu celular</span>
+    </div>
+  </div>
+
+  <div class="overlay-x" id="overlay-x">
+    <div class="x-grande">✕</div>
+  </div>
+
+  <div class="overlay-ganador" id="overlay-ganador">
+    <div class="etiqueta">GANADOR DE LA PARTIDA</div>
+    <div class="nombre-ganador" id="nombre-ganador">Equipo 1</div>
+    <div class="puntos-ganador" id="puntos-ganador">120 puntos</div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/pantalla.js"></script>
+</body>
+</html>
